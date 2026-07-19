@@ -45,6 +45,12 @@
       font-size:15px;
     }
 
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
     button{
       background:#6C63FF;
       color:white;
@@ -58,6 +64,22 @@
 
     button:hover{
       background:#574BDB;
+    }
+
+    .logout-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      background:#ff4d4d;
+      color:white;
+      padding:14px 28px;
+      border-radius:10px;
+      transition:.3s;
+    }
+
+    .logout-btn:hover{
+      background:#e63939;
     }
 
     .blogs{
@@ -94,6 +116,50 @@
       font-size:55px;
       margin-bottom:15px;
     }
+
+    .card{
+      border:1px solid #e5e5e5;
+      border-radius:12px;
+      padding:20px;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      color:#222;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      color:#555;
+      line-height:1.6;
+      margin-bottom:20px;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:12px;
+    }
+
+    .card-actions form{
+      margin:0;
+    }
+
+    .edit-btn{
+      background:#28a745;
+    }
+
+    .edit-btn:hover{
+      background:#218838;
+    }
+
+    .delete-btn{
+      background:#dc3545;
+    }
+
+    .delete-btn:hover{
+      background:#c82333;
+    }
+
   </style>
 </head>
 <body>
@@ -107,11 +173,17 @@
       <p>Manage your blogs and start writing your next story.</p>
     </div>
 
-    <form action="/blog/createBlog" method="GET">
-      <button type="submit">
-        + Create Blog
-      </button>
-    </form>
+    <div class="actions">
+
+      <form action="/blog/createBlog" method="GET">
+        <button type="submit">+ Create Blog</button>
+      </form>
+
+      <a href="/user/logout" class="logout-btn">
+        Logout
+      </a>
+
+    </div>
 
   </div>
 
@@ -119,43 +191,57 @@
 
     <h2>Your Blogs</h2>
 
-    <div class="blogs">
-
-    <h2>Your Blogs</h2>
-
     <% if (blogs.length === 0) { %>
 
-        <div class="empty">
+      <div class="empty">
 
-            <div class="emoji">📝</div>
+        <div class="emoji">📝</div>
 
-            <h3>No blogs yet</h3>
+        <h3>No blogs yet</h3>
 
-            <p>Start writing your first blog.</p>
+        <p>Start writing your first blog.</p>
 
-            <form action="/blog/createBlog" method="GET">
-                <button type="submit">Write Your First Blog</button>
-            </form>
+        <form action="/blog/createBlog" method="GET">
+          <button type="submit">Write Your First Blog</button>
+        </form>
 
-        </div>
+      </div>
 
     <% } else { %>
 
-        <% blogs.forEach(blog => { %>
+      <% blogs.forEach(blog => { %>
 
-            <div class="card">
+        <div class="card">
 
-                <h3><%= blog.title %></h3>
+          <h3><%= blog.title %></h3>
 
-                <p><%= blog.blog %></p>
+          <p><%= blog.blog %></p>
 
-                <button>Edit</button>
-                <button>Delete</button>
+          <div class="card-actions">
 
-            </div>
+            <form action="/blog/edit/<%= blog._id %>" method="GET">
+              <button type="submit" class="edit-btn">
+                ✏️ Edit
+              </button>
+            </form>
 
-        <% }) %>
+            <form action="/blog/delete/<%= blog._id %>" method="POST">
+              <button type="submit" class="delete-btn">
+                🗑️ Delete
+              </button>
+            </form>
+
+          </div>
+
+        </div>
+
+      <% }) %>
 
     <% } %>
 
+  </div>
+
 </div>
+
+</body>
+</html>

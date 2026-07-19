@@ -10,6 +10,7 @@ const blogRouter = require("./router/allblog");
 const createBlogRouter = require("./router/createBlog");
 const signupRouter = require("./router/signup");
 const loginRouter = require("./router/login");
+const logoutRouter = require("./router/logout");
 
 
 
@@ -35,7 +36,7 @@ app.use("/", blogRouter);
 app.use("/", createBlogRouter);
 app.use("/", loginRouter);
 app.use("/", signupRouter);
-
+app.use("/", logoutRouter);
 
 app.listen(port, ()=>{
   console.log("Server started")

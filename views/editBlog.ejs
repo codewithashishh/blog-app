@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Blog</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f5f7fb;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+    }
+
+    .container{
+      width:90%;
+      max-width:700px;
+      background:white;
+      padding:35px;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+
+    h1{
+      text-align:center;
+      margin-bottom:25px;
+      color:#222;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+      color:#333;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:10px;
+      margin-bottom:20px;
+      font-size:15px;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:220px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+    }
+
+    button{
+      flex:1;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .save{
+      background:#6C63FF;
+      color:white;
+    }
+
+    .save:hover{
+      background:#574BDB;
+    }
+
+    .cancel{
+      background:#dc3545;
+      color:white;
+      text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      border-radius:10px;
+    }
+
+    .cancel:hover{
+      background:#c82333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Edit Blog</h1>
+
+    <form action="/blog/edit/<%= blog._id %>" method="POST">
+
+        <label>Title</label>
+
+        <input
+            type="text"
+            name="title"
+            value="<%= blog.title %>"
+            required
+        >
+
+        <label>Blog</label>
+
+        <textarea
+            name="blog"
+            required
+        ><%= blog.blog %></textarea>
+
+        <div class="actions">
+
+            <button class="save" type="submit">
+                Save Changes
+            </button>
+
+            <a href="/user" class="cancel">
+                Cancel
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
