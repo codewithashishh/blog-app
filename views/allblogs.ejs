@@ -3,9 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Blogs</title>
+  <title>Explore Blogs</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f5f7fb;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:40px auto;
+    }
+
+    .header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .header h1{
+      font-size:40px;
+      color:#222;
+      margin-bottom:10px;
+    }
+
+    .header p{
+      color:#666;
+      font-size:17px;
+    }
+
+    .blogs{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:white;
+      padding:25px;
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 15px 30px rgba(0,0,0,.12);
+    }
+
+    .card h2{
+      margin-bottom:10px;
+      color:#222;
+    }
+
+    .author{
+      color:#6C63FF;
+      font-weight:bold;
+      margin-bottom:15px;
+      font-size:14px;
+    }
+
+    .content{
+      color:#555;
+      line-height:1.7;
+    }
+
+    .empty{
+      background:white;
+      padding:60px;
+      border-radius:18px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.08);
+    }
+
+    .emoji{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .empty h2{
+      margin-bottom:10px;
+      color:#222;
+    }
+
+    .empty p{
+      color:#666;
+    }
+  </style>
+
 </head>
 <body>
-  All blogs are here
+
+<div class="container">
+
+  <div class="header">
+    <h1>Explore Blogs 📚</h1>
+    <p>Discover stories shared by our community.</p>
+  </div>
+
+  <% if (blogs.length === 0) { %>
+
+    <div class="empty">
+
+      <div class="emoji">📖</div>
+
+      <h2>No Blogs Yet</h2>
+
+      <p>Be the first one to publish a blog.</p>
+
+    </div>
+
+  <% } else { %>
+
+    <div class="blogs">
+
+      <% blogs.forEach(blog => { %>
+
+        <div class="card">
+
+          <h2><%= blog.title %></h2>
+
+          <div class="author">
+            By <%= blog.author.name %>
+          </div>
+
+          <div class="content">
+            <%= blog.blog %>
+          </div>
+
+        </div>
+
+      <% }) %>
+
+    </div>
+
+  <% } %>
+
+</div>
+
 </body>
 </html>

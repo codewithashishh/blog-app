@@ -1,19 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#eef2ff,#f8f9ff);
+    }
+
+    .container{
+      width:900px;
+      text-align:center;
+    }
+
+    h1{
+      font-size:42px;
+      color:#222;
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#666;
+      margin-bottom:50px;
+      font-size:18px;
+    }
+
+    .cards{
+      display:flex;
+      gap:30px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .card{
+      width:340px;
+      background:white;
+      padding:35px;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+    }
+
+    .icon{
+      font-size:55px;
+      margin-bottom:18px;
+    }
+
+    .card h2{
+      color:#222;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      font-size:15px;
+      color:#666;
+      line-height:1.6;
+      margin-bottom:25px;
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#6C63FF;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    button:hover{
+      background:#574BDB;
+    }
+  </style>
+
 </head>
 <body>
-  <div>
-  <form action="/user" method="get">
-    <button type="submit">Your Blogs</button>
-  </form>
 
-  <form action="/blog" method="get">
-    <button type="submit">All Blogs</button>
-  </form>
-  </div>
+<div class="container">
+
+    <h1>Welcome to BlogVerse</h1>
+
+    <p>Read inspiring stories or manage your own collection of blogs.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">✍️</div>
+
+            <h2>My Space</h2>
+
+            <p>
+                Create, edit and manage all the blogs you've written from your personal dashboard.
+            </p>
+
+            <form action="/user" method="GET">
+                <button type="submit">
+                    Open Dashboard
+                </button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="icon">📚</div>
+
+            <h2>Explore Stories</h2>
+
+            <p>
+                Discover blogs shared by the community and enjoy reading different perspectives.
+            </p>
+
+            <form action="/blog" method="GET">
+                <button type="submit">
+                    Browse Blogs
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>

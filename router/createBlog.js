@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {createNewBlog} = require("../controllers/createBlog")
+const {createNewBlog,
+  writeNewBlog
+} = require("../controllers/createBlog")
 
 
 router.get("/blog/createBlog", createNewBlog)

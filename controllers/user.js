@@ -1,7 +1,11 @@
+const Blog = require("../models/blogs");
 
+async function getUserPanel(req, res) {
+    const blogs = await Blog.find({
+        author: req.session.userId,
+    });
 
-async function getUserPanel(req,res){
-  res.render("userblog");
+    res.render("userblog", { blogs });
 }
 
-module.exports = {getUserPanel};
+module.exports= {getUserPanel};
